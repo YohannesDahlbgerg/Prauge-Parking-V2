@@ -6,7 +6,7 @@ using System.Text.Json;
 namespace Prauge_Parking_V2.DataAccess;
 public class Grabb  // sätta så klassens egenskaper är regnummer och bil typ
 {
-    public string Name { get; set; }
+    public string regNumber { get; set; }
     public int Age { get; set; }
     public string Snygghet { get; set; }
 }
@@ -18,7 +18,7 @@ public class Readjson //skapa json fil och starta när programmet körs.
         // Skapa ett objekt
         Grabb person = new Grabb
         {
-            Name = "Yohannes",
+            regNumber = "regNumber",
             Age = 19,
             Snygghet = "10/10"
         };
@@ -27,7 +27,7 @@ public class Readjson //skapa json fil och starta när programmet körs.
         string jsonString = JsonSerializer.Serialize(person);
 
         // Skriv JSON-strängen till en fil
-        string filePath = "C:\\Users\\yohan\\source\\repos\\Prauge Parking V2\\Prauge Parking V2\\DataAccess\\person.json"; // Ange filens sökväg
+        string filePath = "person.json"; // Ange filens sökväg
         File.WriteAllText(filePath, jsonString);
 
         //Öppnar filen när programmet körs

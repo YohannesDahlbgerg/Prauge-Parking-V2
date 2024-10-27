@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Channels;
+using Prauge_Parking_V2.VehicleTypes;
 
 
 public class Parking
