@@ -11,9 +11,9 @@ public class Grabb  // sätta så klassens egenskaper är regnummer och bil typ
     public string Snygghet { get; set; }
 }
 
-public class Reader //skapa json fil och starta när programmet körs.
+public class Readjson //skapa json fil och starta när programmet körs.
 {
-    public void Läser()
+    public void Laser()
     {
         // Skapa ett objekt
         Grabb person = new Grabb

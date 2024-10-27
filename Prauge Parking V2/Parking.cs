@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prauge_Parking_V2.DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Threading.Channels;
 
@@ -13,6 +14,7 @@ public class Parking
 
     static void Main(string[] args)
     {
+        Program.Second(args);
         // Skapar en lista för varje parkeringsruta
         for (int i = 0; i < parkingSpots.Length; i++)
         {
@@ -215,5 +217,20 @@ public class Parking
             return true;
         }
         return false;
+    }
+
+   
+
+}
+
+class Program
+{
+    public static void Second(string[] args)
+    {
+        // Skapa en instans av Reader-klassen
+        Readjson reader = new Readjson();
+
+        // Anropa metoden Läser
+        reader.Laser();
     }
 }
