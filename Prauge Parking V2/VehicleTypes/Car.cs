@@ -11,14 +11,17 @@ namespace Prauge_Parking_V2.VehicleTypes;
 internal class Car : Vehicle
 {
     public new string vehicleType { get; private set; } = "CAR";
-    public Car(string regNumber, int vehicleSize) : base(regNumber, vehicleSize, "CAR")
+
+    public override int Size { get =>4;  }
+
+    public Car(string regNumber, int size) : base(regNumber, "CAR")
     {
-        Console.WriteLine($"{vehicleType}#{regNumber}:{vehicleSize}");
+        Console.WriteLine($"{vehicleType}#{regNumber}:{Size}");
     }
 
-    static void Cars(string regNumber, int vehicleSize)
+    static void Cars(string regNumber, int Size)
     {
-        var car = new Car(regNumber, vehicleSize);
+        var car = new Car(regNumber, Size);
     }
 }
 

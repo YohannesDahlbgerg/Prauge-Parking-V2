@@ -6,19 +6,21 @@ using System.Threading.Tasks;
 
 namespace Prauge_Parking_V2.VehicleTypes;
 
-public class Vehicle
+public abstract class Vehicle
 {
     // Egenskaper för fordonet
     public string RegNumber { get; set; }
     public int VehicleSize { get; set; }
     public string VehicleType { get; set; }
 
+    public abstract int Size { get;}
+
     // Konstruktor för att sätta egenskaperna vid skapandet av ett objekt
-    public Vehicle(string regNumber, int vehicleSize, string vehicleType)
+    public Vehicle(string regNumber, string vehicleType)
     {
         RegNumber = regNumber;
         vehicleType = vehicleType;
-        VehicleSize = vehicleSize;
+        
         
     }
 
@@ -44,6 +46,12 @@ class ProgramV
 
         int vehicleSize;
 
+        var veh = new Car(regNumber);
+
+
+       
+        
+
         if (vehicleType == "CAR")
         {
             vehicleSize = 4;
@@ -58,7 +66,7 @@ class ProgramV
             return;
         }
 
-        Vehicle vehicle = new Vehicle(regNumber, vehicleSize, vehicleType);
+        Vehicle vehicle = new(regNumber, vehicleSize, vehicleType);
         vehicle.DisplayInfo();
     }
 }
