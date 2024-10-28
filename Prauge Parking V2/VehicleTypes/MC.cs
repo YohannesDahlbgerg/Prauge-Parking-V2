@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Prauge_Parking_V2.VehicleTypes;
 
-internal class MC : Vehicle
+public class MC : Vehicle
 {
     public new string vehicleType { get; private set; } = "MC";
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Prauge_Parking_V2.Parking
 {
-    internal class ParkingGarage : ParkingSpot
+    public class ParkingGarage : ParkingSpot
     {
         public void ShowParkingStatus()
         {
