@@ -2,44 +2,69 @@
 using System.Diagnostics;
 using System.IO;
 using System.Text.Json;
+using Prauge_Parking_V2.Parking;
+using Prauge_Parking_V2.VehicleTypes;
+
 
 namespace Prauge_Parking_V2.DataAccess;
-public class Grabb  // sätta så klassens egenskaper är regnummer och bil typ
+
+public class carInfo : Vehicle
 {
-    public string regNumber { get; set; }
-    public int Age { get; set; }
-    public string Snygghet { get; set; }
+    // Implementerar egenskapen Size
+    //public override int Size => Vehicle;
+
+    // Nya egenskaper specifika för carInfo
+    public int VehicleSize { get; set; }
+
+    // Konstruktor för carInfo som anropar basklassen Vehicle
+    public carInfo(string LicensePlate, string vehicleType, int vehicleSize)
+        : base(LicensePlate, vehicleType) // Skickar vidare parametrarna till basklassen
+    {
+        VehicleSize = vehicleSize;
+    }
 }
 
-public class Readjson //skapa json fil och starta när programmet körs.
+public class Readjson // Skapar, sparar och läser av carInfo-objekt som JSON-fil.
 {
-    public void Laser()
+    private readonly string filePath;
+
+    public Readjson()
     {
-        // Skapa ett objekt
-        Grabb person = new Grabb
-        {
-            regNumber = "regNumber",
-            Age = 19,
-            Snygghet = "10/10"
-        };
+        // Spara filen i Dokument-mappen
+        filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "carInfo.json");
+    }
+
+    public void SparaData()
+    {
+        // Skapa ett carInfo-objekt
+        carInfo car = new carInfo("ABC123", "Sedan", 2);
 
         // Konvertera objektet till JSON-sträng
-        string jsonString = JsonSerializer.Serialize(person);
+        string jsonString = JsonSerializer.Serialize(car);
 
         // Skriv JSON-strängen till en fil
-        string filePath = "person.json"; // Ange filens sökväg
         File.WriteAllText(filePath, jsonString);
+        Console.WriteLine("Data sparad till JSON-fil.");
+    }
 
-        //Öppnar filen när programmet körs
-        string FilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "person.json");
-
+    public void LaserData()
+    {
+        // Läs JSON-filen och deserialisera till ett carInfo-objekt
         if (File.Exists(filePath))
         {
+            string jsonString = File.ReadAllText(filePath);
+            carInfo car = JsonSerializer.Deserialize<carInfo>(jsonString);
+
+            Console.WriteLine($"Registreringsnummer: {car.LicensePlate}");
+            Console.WriteLine($"Fordonstyp: {car.Type}");
+            Console.WriteLine($"Storlek: {car.VehicleSize}");
+
+            // Öppnar filen i standardprogrammet
             Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
         }
         else
         {
-            Console.WriteLine("Filen hittades inte!");
+            Console.WriteLine("JSON-filen kunde inte hittas.");
         }
     }
 }

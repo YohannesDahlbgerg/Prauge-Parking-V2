@@ -1,72 +1,65 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Prauge_Parking_V2.VehicleTypes;
+using System;
 
-namespace Prauge_Parking_V2.VehicleTypes;
-
-public abstract class Vehicle
+namespace Prauge_Parking_V2.VehicleTypes
 {
-    // Egenskaper för fordonet
-    public string RegNumber { get; set; }
-    public int VehicleSize { get; set; }
-    public string VehicleType { get; set; }
-
-    public abstract int Size { get;}
-
-    // Konstruktor för att sätta egenskaperna vid skapandet av ett objekt
-    public Vehicle(string regNumber, string vehicleType)
+    public enum VehicleType
     {
-        RegNumber = regNumber;
-        vehicleType = vehicleType;
-        
-        
+        Car,
+        MC,
+        Bus,
+        Bicycle
     }
 
-    // Metod för att visa fordonsinformation
-    public void DisplayInfo() // Gör så det kommer upp i JSON fil !!
+    public abstract class Vehicle
     {
-        Console.WriteLine($"Regnummer: {RegNumber}");
-        Console.WriteLine($"Storlek: {VehicleSize}");
-        Console.WriteLine($"Fordonstyp: {VehicleType}");
+        private string type;
+
+        protected Vehicle(string licensePlate, string type)
+        {
+            LicensePlate = licensePlate;
+            this.type = type;
+        }
+
+        public string LicensePlate { get; set; }
+        public DateTime CheckInTime { get; set; }
+        public VehicleType Type { get; set; }
+        public int Size { get; set; } // 1 för cyklar, 2 för MC, 4 för bilar, 16 för bussar
     }
-}
 
-// Exempel på användning i din Main-metod
-class ProgramV
-{
-    static void Main(string[] args)
+    public class Car : Vehicle
     {
-        Console.Write("Ange registreringsnummer: ");
-        string regNumber = Console.ReadLine();
-
-        Console.Write("Ange fordonstyp (CAR/MC): ");
-        string vehicleType = Console.ReadLine().ToUpper();
-
-        int vehicleSize;
-
-        var veh = new Car(regNumber);
-
-
-       
-        
-
-        if (vehicleType == "CAR")
+        public Car(string licensePlate) : base(licensePlate, "Car") // Anropar bas-konstruktorn
         {
-            vehicleSize = 4;
+            Type = VehicleType.Car;
+            Size = 4;
         }
-        else if (vehicleType == "MC")
-        {
-            vehicleSize = 2;
-        }
-        else
-        {
-            Console.WriteLine("Ogiltig fordonstyp. Vänligen ange CAR eller MC.");
-            return;
-        }
+    }
 
-        Vehicle vehicle = new(regNumber, vehicleSize, vehicleType);
-        vehicle.DisplayInfo();
+    public class MC : Vehicle
+    {
+        public MC(string licensePlate) : base(licensePlate, "MC") // Anropar bas-konstruktorn
+        {
+            Type = VehicleType.MC;
+            Size = 2;
+        }
+    }
+
+    public class Bus : Vehicle
+    {
+        public Bus(string licensePlate) : base(licensePlate, "Bus") // Anropar bas-konstruktorn
+        {
+            Type = VehicleType.Bus;
+            Size = 16;
+        }
+    }
+
+    public class Bicycle : Vehicle
+    {
+        public Bicycle(string licensePlate) : base(licensePlate, "Bicycle") // Anropar bas-konstruktorn
+        {
+            Type = VehicleType.Bicycle;
+            Size = 1;
+        }
     }
 }

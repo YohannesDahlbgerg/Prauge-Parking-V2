@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 
 namespace Prauge_Parking_V2.VehicleTypes;
 
-public class Car : Vehicle
-{
-    public new string vehicleType { get; private set; } = "CAR";
+//public class Car : Vehicle
+//{
+//    public new string vehicleType { get; private set; } = "CAR";
 
-    public override int Size { get =>4;  }
+//    public override int Size { get =>4;  }
 
-    public Car(string regNumber, int size) : base(regNumber, "CAR")
-    {
-        Console.WriteLine($"{vehicleType}#{regNumber}:{Size}");
-    }
+//    public Car(string regNumber, int size) : base(regNumber, "CAR")
+//    {
+//        Console.WriteLine($"{vehicleType}#{regNumber}:{Size}");
+//    }
 
-    static void Cars(string regNumber, int Size)
-    {
-        var car = new Car(regNumber, Size);
-    }
-}
+//    public static void Cars(string regNumber, int Size)
+//    {
+//        var car = new Car(regNumber, Size);
+//    }
+//}
 

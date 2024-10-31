@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Prauge_Parking_V2._1.PraugeConsole
 {
-    internal class Menu
+    public class Menu
     {
         public static void ShowMenu()
         {

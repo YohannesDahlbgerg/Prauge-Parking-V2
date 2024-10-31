@@ -6,12 +6,24 @@ using System.Threading.Tasks;
 
 namespace Prauge_Parking_V2.Parking
 {
-    public class ParkingGarage : ParkingSpot
+    public class ParkingGarage
     {
+        public List<List<(string vehicleType, string regNumber)>> parkingSpots;
+
+        public ParkingGarage(int totalSpots)
+        {
+            // Initiera listan med parkeringsplatser
+            parkingSpots = new List<List<(string, string)>>();
+            for (int i = 0; i < totalSpots; i++)
+            {
+                parkingSpots.Add(new List<(string, string)>());
+            }
+        }
+
         public void ShowParkingStatus()
         {
             Console.WriteLine("\nParkeringsstatus:");
-            for (int i = 0; i < parkingSpots.Length; i++)
+            for (int i = 0; i < parkingSpots.Count; i++)
             {
                 if (parkingSpots[i].Count > 0)
                 {
@@ -25,3 +37,4 @@ namespace Prauge_Parking_V2.Parking
         }
     }
 }
+
