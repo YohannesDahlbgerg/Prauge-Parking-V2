@@ -25,6 +25,17 @@ namespace Prauge_Parking_V2.DataAccess
 
 }
 
+public class ConfigManager
+{
+    public ParkingGarageConfig ParkingGarage { get; set; }
+    public object Settings { get; internal set; }
+    public object AppName { get; internal set; }
+    public object Version { get; internal set; }
+    public object EnableLogging { get; set; } = true;
+    public string LogLevel { get; set; }
+}
+
+
 public class ProgramA
 {
     public static void Main(string[] args)
@@ -38,8 +49,7 @@ public class ProgramA
 
             Console.WriteLine($"AppName: {config.AppName}");
             Console.WriteLine($"Version: {config.Version}");
-            Console.WriteLine($"MaxRetries: {config.Settings.MaxRetries}");
-            Console.WriteLine($"EnableLogging: {config.Settings.EnableLogging}");
+            Console.WriteLine(value: $"EnableLogging: {config.Settings.EnableLogging}");
             Console.WriteLine($"LogLevel: {config.Settings.LogLevel}");
         }
         else
@@ -48,5 +58,3 @@ public class ProgramA
         }
     }
 }
-
-

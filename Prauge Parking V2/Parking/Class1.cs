@@ -70,22 +70,26 @@
 //            }
 //        }
 
-//        public void DisplayMap(int spotsPerRow)
+
+
+//public void DisplayMap(int spotsPerRow)
+//{
+//    Console.WriteLine("\nParkeringskarta:");
+//    for (int i = 0; i < _spots.Count; i++)
+//    {
+//        Console.Write(_spots[i]);
+//        if ((i + 1) % spotsPerRow == 0)
 //        {
-//            Console.WriteLine("\nParkeringskarta:");
-//            for (int i = 0; i < _spots.Count; i++)
-//            {
-//                Console.Write(_spots[i]);
-//                if ((i + 1) % spotsPerRow == 0)
-//                {
-//                    Console.WriteLine();
-//                }
-//            }
 //            Console.WriteLine();
 //        }
-
-//        public int GetAvailableSpots() => _spots.FindAll(s => !s.IsOccupied).Count;
 //    }
+//    Console.WriteLine();
+//}
+
+//public int GetAvailableSpots() => _spots.FindAll(s => !s.IsOccupied).Count;
+//    }
+
+
 
 //    public class Program
 //    {

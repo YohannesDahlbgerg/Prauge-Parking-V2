@@ -13,43 +13,42 @@ public class carInfo : Vehicle
     // Implementerar egenskapen Size
     //public override int Size => Vehicle;
 
-    // Nya egenskaper specifika för carInfo
     public int VehicleSize { get; set; }
 
-    // Konstruktor för carInfo som anropar basklassen Vehicle
+    
     public carInfo(string LicensePlate, string vehicleType, int vehicleSize)
-        : base(LicensePlate, vehicleType) // Skickar vidare parametrarna till basklassen
+        : base(LicensePlate, vehicleType)
     {
         VehicleSize = vehicleSize;
     }
 }
 
-public class Readjson // Skapar, sparar och läser av carInfo-objekt som JSON-fil.
+public class Readjson
 {
-    private readonly string filePath;
+    public readonly string filePath;
 
     public Readjson()
     {
-        // Spara filen i Dokument-mappen
+        
         filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "carInfo.json");
     }
 
     public void SparaData()
     {
-        // Skapa ett carInfo-objekt
-        carInfo car = new carInfo("ABC123", "Sedan", 2);
+        
+        carInfo car = new carInfo(Type, LicensePlate, vehicleSize);
 
-        // Konvertera objektet till JSON-sträng
+        
         string jsonString = JsonSerializer.Serialize(car);
 
-        // Skriv JSON-strängen till en fil
+        
         File.WriteAllText(filePath, jsonString);
         Console.WriteLine("Data sparad till JSON-fil.");
     }
 
     public void LaserData()
     {
-        // Läs JSON-filen och deserialisera till ett carInfo-objekt
+        
         if (File.Exists(filePath))
         {
             string jsonString = File.ReadAllText(filePath);
@@ -59,7 +58,7 @@ public class Readjson // Skapar, sparar och läser av carInfo-objekt som JSON-fi
             Console.WriteLine($"Fordonstyp: {car.Type}");
             Console.WriteLine($"Storlek: {car.VehicleSize}");
 
-            // Öppnar filen i standardprogrammet
+            
             Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
         }
         else

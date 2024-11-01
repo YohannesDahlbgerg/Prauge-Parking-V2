@@ -1,12 +1,12 @@
-﻿using Prauge_Parking_V2.DataAccess;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
+﻿//using Prauge_Parking_V2.DataAccess;
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Security.Cryptography;
+//using System.Text;
+//using System.Threading.Tasks;
 
-namespace Prauge_Parking_V2.VehicleTypes;
+//namespace Prauge_Parking_V2.VehicleTypes;
 
 //public class MC : Vehicle
 //{
